@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx'
 import BuyCredits from './pages/BuyCredit.jsx'
 import Result from './pages/Result.jsx'
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='/buy' element={<BuyCredits/>} />
         <Route path='/result' element={<Result/>} />
       </Routes>
+      <Footer />
     </div>
     
     </>

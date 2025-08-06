@@ -31,6 +31,8 @@ export const assets = {
     upload_btn_icon,
     credit_icon
 }
+export default assets;
+
 
 export const testimonialsData = [
     {
