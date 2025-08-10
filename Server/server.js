@@ -4,6 +4,7 @@ dotenv.config(); // Load env variables first
 import express from "express";
 import cors from "cors";
 import connectDB from "./configs/mongodb.js";
+import userRouter from "./Routes/userRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -19,6 +20,8 @@ const startServer = async () => {
   app.get("/", (req, res) => {
     res.send("API Working");
   });
+
+  app.use('/api/user',userRouter)
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
