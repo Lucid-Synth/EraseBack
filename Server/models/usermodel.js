@@ -2,18 +2,18 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   clerkId: {
-    type:String,
-    required:true,
-    unique:true
+    type: String,
+    required: true,
+    unique: true
   },
   email: {
-    type:String,
-    required:true,
-    unique:true
+    type: String,
+    required: true,
+    unique: true
   },
   photo: {
-    type:String,
-    required:true
+    type: String,
+    required: true
   },
   firstName: {
     type: String
@@ -23,10 +23,11 @@ const userSchema = new mongoose.Schema({
   },
   creditBalance: {
     type: Number,
-    default:20
+    default: 20
   }
-})
+}, { timestamps: true });
 
-const userModel = mongoose.model.user || mongoose.model('user',userSchema)
+// Use mongoose.models to prevent recompiling in dev mode
+const User = mongoose.models.user || mongoose.model("user", userSchema);
 
-export default userModel
+export default User;
