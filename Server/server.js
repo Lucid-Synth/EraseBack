@@ -6,7 +6,7 @@ import cors from "cors";
 import connectDB from "./configs/mongodb.js";
 import userRouter from "./Routes/userRoutes.js";
 import bodyParser from "body-parser";
-import { clerkWebhooks } from "./controllers/clerkWebhook.js"; // ✅ Import your webhook controller
+import { clerkWebhooks } from "./controllers/Usercontroller.js"; // ✅ Import your webhook controller
 
 const app = express(); // ✅ Move this before using app.post()
 const port = process.env.PORT || 4000;
