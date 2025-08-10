@@ -1,28 +1,19 @@
 import dotenv from "dotenv";
 dotenv.config(); // Load env variables first
 
-import express from "express";
-import cors from "cors";
-import connectDB from "./configs/mongodb.js";
+import { connectDB } from '../config/db.js';
+import cors from 'cors';
+import express from 'express';
 
 const app = express();
-const port = process.env.PORT || 4000;
 
-// Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-// Start server after DB connection
-const startServer = async () => {
-  await connectDB();
+app.get('/', (req, res) => {
+  res.json({ message: 'API WORKING' });
+});
 
-  app.get("/", (req, res) => {
-    res.send("API Working");
-  });
+connectDB();
 
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
-};
-
-startServer();
+export default app;
