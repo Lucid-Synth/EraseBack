@@ -20,6 +20,14 @@ const startServer = async () => {
   app.get("/", (req, res) => {
     res.send("API Working");
   });
+  
+  app.use(
+  express.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
 
   app.use('/api/user',userRouter)
 
