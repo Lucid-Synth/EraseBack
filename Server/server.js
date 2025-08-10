@@ -10,8 +10,14 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(
+  express.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
 
 // Start server after DB connection
 const startServer = async () => {
@@ -20,14 +26,8 @@ const startServer = async () => {
   app.get("/", (req, res) => {
     res.send("API Working");
   });
-  
-  app.use(
-  express.json({
-    verify: (req, res, buf) => {
-      req.rawBody = buf.toString();
-    },
-  })
-);
+
+
 
   app.use('/api/user',userRouter)
 
