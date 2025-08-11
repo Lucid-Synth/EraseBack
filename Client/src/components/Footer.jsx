@@ -16,13 +16,13 @@ function Footer() {
 
         {/* Right side - Social icons */}
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:opacity-75 transition">
+          <a href="https://www.facebook.com/profile.php?id=61579110789540" className="hover:opacity-75 transition">
             <img src={assets.facebook_icon} alt="Facebook" className="w-8" />
           </a>
-          <a href="#" className="hover:opacity-75 transition">
+          <a href=" https://x.com/LucidSynth" className="hover:opacity-75 transition">
             <img src={assets.twitter_icon} alt="Twitter" className="w-8" />
           </a>
-          <a href="#" className="hover:opacity-75 transition">
+          <a href="https://dev.lucidsynth@gmail.com" className="hover:opacity-75 transition">
             <img src={assets.google_plus_icon} alt="Google Plus" className="w-8" />
           </a>
         </div>
