@@ -1,5 +1,6 @@
 import React from 'react'
 import { assets } from '../assets/assets.js'
+import { Link } from 'react-router-dom'
 
 function Result() {
   return (
@@ -23,15 +24,19 @@ function Result() {
 
       {/* Buttons */}
       <div className='flex flex-col sm:flex-row gap-4 justify-center mt-10'>
+        <Link to='/image'>
         <button className='border border-black text-black rounded-full px-8 py-3.5 hover:bg-gray-100 transition-all duration-300'>
           Try another image
         </button>
+        </Link>
+        <Link to='/image'>
         <a
           href="#"
           className='inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full cursor-pointer bg-gradient-to-r from-violet-600 to-fuchsia-500 text-white hover:scale-105 transition-all duration-700'
         >
           Download image
         </a>
+        </Link>
       </div>
     </div>
   )
