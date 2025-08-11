@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import { connectDB } from "./configs/mongodb.js";
+import connectDB from "./configs/mongodb.js";
 import userRoutes from "./Routes/userRoutes.js";
 
 dotenv.config();
