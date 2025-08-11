@@ -4,6 +4,7 @@ import BuyCredits from './pages/BuyCredit.jsx'
 import Result from './pages/Result.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import ComingSoon from './pages/ComingSoon.jsx'
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/buy' element={<BuyCredits/>} />
         <Route path='/result' element={<Result/>} />
+        <Route path='/image' element={<ComingSoon />} />
       </Routes>
       <Footer />
     </div>
