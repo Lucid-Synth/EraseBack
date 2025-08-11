@@ -19,7 +19,7 @@ app.use("/webhook", bodyParser.raw({ type: "application/json" }));
 app.post(
   "/clerk-webhook",
   bodyParser.raw({ type: "application/json" }),
-  clerkWebhooks
+  handler
 );
 
 // Start server after DB connection
