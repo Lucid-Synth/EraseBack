@@ -16,6 +16,10 @@ app.use("/api/webhooks/clerk",
   userRoutes
 );
 
+app.get("/", (req, res) => {
+  res.send("✅ API is working");
+});
+
 // JSON parser for normal routes
 app.use(express.json());
 
