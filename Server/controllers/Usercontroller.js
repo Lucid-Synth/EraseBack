@@ -5,15 +5,16 @@ const clerkWebhooks = async (req, res) => {
   try {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
 
-    // Verify signature
-    const payload = req.body.toString("utf8"); // raw buffer → string
-    whook.verify(payload, {
+    // Clerk requires raw body
+    const payload = req.body.toString("utf8");
+    const headers = {
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
       "svix-signature": req.headers["svix-signature"],
-    });
+    };
 
-    const event = JSON.parse(payload);
+    // Verify & parse event
+    const event = whook.verify(payload, headers);
     const { data, type } = event;
 
     switch (type) {
@@ -29,13 +30,13 @@ const clerkWebhooks = async (req, res) => {
         break;
       }
       case "user.updated": {
-        const userData = {
+        const updatedData = {
           email: data.email_addresses[0].email_address,
           firstname: data.first_name,
           lastname: data.last_name,
           photo: data.image_url,
         };
-        await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
+        await userModel.findOneAndUpdate({ clerkId: data.id }, updatedData, { new: true });
         break;
       }
       case "user.deleted": {
@@ -44,7 +45,7 @@ const clerkWebhooks = async (req, res) => {
       }
     }
 
-    res.json({ success: true });
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error("Webhook error:", error);
     res.status(400).json({ success: false, message: error.message });
